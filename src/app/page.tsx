@@ -11,7 +11,11 @@ import BarbershopItem from "./_components/barbeshop-item";
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({});
-  console.log({ barbershops });
+  /*const polularBabershop = await db.barbershop.findMany({
+    orderBy:{
+      name: "desc",
+    }
+  })*/
 
   return (
     <div>
@@ -27,6 +31,69 @@ const Home = async () => {
             <SearchIcon />
           </Button>
         </div>
+        {/* BUSCA RÁPIDA */}
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          <Button className="gap-2" variant="secondary">
+            <Image src="/cabelo.svg" width={16} height={16} alt="cabelo" />
+            cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/barba.svg" width={16} height={16} alt="barba" />
+            cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/acabamento.svg"
+              width={16}
+              height={16}
+              alt="acabamento"
+            />
+            cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/cabelo.svg" width={16} height={16} alt="cabelo" />
+            cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/barba.svg" width={16} height={16} alt="barba" />
+            cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/acabamento.svg"
+              width={16}
+              height={16}
+              alt="acabamento"
+            />
+            cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/cabelo.svg" width={16} height={16} alt="cabelo" />
+            cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/barba.svg" width={16} height={16} alt="barba" />
+            cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/acabamento.svg"
+              width={16}
+              height={16}
+              alt="acabamento"
+            />
+            cabelo
+          </Button>
+        </div>
+
         {/* Imagem*/}
         <div className="relative mt-6 h-[150px] w-full">
           <Image
@@ -69,6 +136,15 @@ const Home = async () => {
           <BarbershopItem key={barbershop.id} barbershop={barbershop} />
         ))}
       </div>
+      <footer>
+        <Card>
+          <CardContent className="px-5 py-6">
+            <p className="text-sm text-gray-400">
+              © 2024 Copyright<span className="font-bold"></span>
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
   );
 };
