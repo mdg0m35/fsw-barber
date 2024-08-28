@@ -5,6 +5,8 @@ import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/barbeshop-item";
 import BookingItem from "./_components/booking-item";
 import Search from "./_components/search";
+import { quickSearchOptions } from "./_constants/search";
+import Link from "next/link";
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({});
@@ -27,65 +29,24 @@ const Home = async () => {
         </div>
         {/* BUSCA RÁPIDA */}
         <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
-          <Button className="gap-2" variant="secondary">
-            <Image src="/cabelo.svg" width={16} height={16} alt="cabelo" />
-            cabelo
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image src="/barba.svg" width={16} height={16} alt="barba" />
-            cabelo
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image
-              src="/acabamento.svg"
-              width={16}
-              height={16}
-              alt="acabamento"
-            />
-            cabelo
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image src="/cabelo.svg" width={16} height={16} alt="cabelo" />
-            cabelo
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image src="/barba.svg" width={16} height={16} alt="barba" />
-            cabelo
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image
-              src="/acabamento.svg"
-              width={16}
-              height={16}
-              alt="acabamento"
-            />
-            cabelo
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image src="/cabelo.svg" width={16} height={16} alt="cabelo" />
-            cabelo
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image src="/barba.svg" width={16} height={16} alt="barba" />
-            cabelo
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image
-              src="/acabamento.svg"
-              width={16}
-              height={16}
-              alt="acabamento"
-            />
-            cabelo
-          </Button>
+          {quickSearchOptions.map((option) => (
+            <Button
+              className="gap-2"
+              variant="secondary"
+              key={option.title}
+              asChild
+            >
+              <Link href={`/barbershops?service=${option.title}`}>
+                <Image
+                  src={option.imageUrl}
+                  width={16}
+                  height={16}
+                  alt={option.title}
+                />
+                {option.title}
+              </Link>
+            </Button>
+          ))}
         </div>
 
         {/* Imagem*/}
